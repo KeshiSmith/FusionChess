@@ -4,15 +4,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background">
-    <ImageView
+    <com.keshi.chess.ChessView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:layout_marginTop="50sp"
-        android:layout_marginLeft="10sp"
-        android:layout_marginRight="10sp"
-        android:src="@drawable/board"
-        android:adjustViewBounds="true"/>
+        android:layout_marginTop="50sp"/>
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
