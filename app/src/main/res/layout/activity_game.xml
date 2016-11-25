@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/background">
     <com.keshi.chess.ChessView
+        android:id="@+id/game_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
@@ -33,13 +34,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <Button
+                android:id="@+id/game_pvp"
+                style="@style/game_button"
+                android:text="@string/game_pvp" />
+            <Button
                 android:id="@+id/game_settings"
                 style="@style/game_button"
-                android:text="@string/game_settings" />
-            <Button
-                android:id="@+id/game_assist"
-                style="@style/game_button"
-                android:text="@string/game_assist"/>
+                android:text="@string/game_settings"/>
             <Button
                 android:id="@+id/game_back"
                 style="@style/game_button"

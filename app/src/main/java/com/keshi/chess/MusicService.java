@@ -10,6 +10,8 @@ import android.media.MediaPlayer;
 import android.os.IBinder;
 
 public class MusicService extends Service {
+    private SharedPreferences preferences;
+    private SharedPreferences.Editor editor;
     // MediaPlayer-Music,Sound.
     private MediaPlayer music;
     private MediaPlayer sound;
@@ -30,8 +32,10 @@ public class MusicService extends Service {
         IntentFilter filter=new IntentFilter();
         filter.addAction("com.keshi.MUSIC");
         registerReceiver(serviceReceiver,filter);
+        // Set SharedPreferences and get values from SharedPreferences file.
+        preferences=getSharedPreferences("FusionChess",MODE_PRIVATE);
+        editor=preferences.edit();
         // Set music play of default.
-        SharedPreferences preferences=getSharedPreferences("FusionChess",MODE_PRIVATE);
         state_mute=preferences.getBoolean("MUTE",false);
         volume_music=preferences.getInt("MUSIC",3);
         volume_sound=preferences.getInt("SOUND",3);
@@ -41,11 +45,16 @@ public class MusicService extends Service {
     @Override
     public void onDestroy() {
         super.onDestroy();
+        // Write it in file.
+        editor.putBoolean("MUTE", MusicService.state_mute);
+        editor.putInt("MUSIC", MusicService.volume_music);
+        editor.putInt("SOUND", MusicService.volume_sound);
+        editor.commit();
+        // Stop music and sound and release them.
         if(music.isPlaying())
             music.stop();
-        music.release(); music=null;
-        sound.release(); sound=null;   // Stop music and sound and release them.
-        System.gc();
+        music.release();
+        sound.release();
     }
 
     private void playMusic(boolean play){
@@ -63,7 +72,6 @@ public class MusicService extends Service {
             if(state_mute) {
                 music.release();    // Release music.
                 music = null;
-                System.gc();
             }
             else music.pause();   // Pause music.
         }
@@ -77,7 +85,14 @@ public class MusicService extends Service {
     // Play sound.
     private void playSound(int resid){
         if(resid==-1) return;   // Exit when resource id is -1.
-        sound=MediaPlayer.create(this,resid);
+        if(sound!=null){// Release sound.
+            if(sound.isPlaying()){
+                sound.stop();
+            }
+            sound.release();
+            sound=null;
+        }
+        sound=MediaPlayer.create(this,resid);// Reload sound.
         sound.setVolume((float) (volume_sound/5.0),(float) (volume_sound/5.0));
         sound.setLooping(false);
         sound.start();

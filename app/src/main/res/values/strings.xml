@@ -40,7 +40,51 @@
     <string name="game_new_game">NEW</string>
     <string name="game_undo">UNDO</string>
     <string name="game_resign">RESIGN</string>
+    <string name="game_pvp">PVP</string>
     <string name="game_settings">SETTINGS</string>
-    <string name="game_assist">ASSIST</string>
     <string name="game_back">BACK</string>
+
+    <string name="dialog_new_title">NEW</string>
+    <string name="dialog_new_red_or_blue">First or Next:</string>
+    <string name="dialog_new_red">First</string>
+    <string name="dialog_new_blue">Next</string>
+    <string name="dialog_new_confirm">CONFIRM</string>
+    <string name="dialog_new_cancel">CANCEL</string>
+
+    <string name="dialog_undo_message">That hope to undo, do you agree it?</string>
+    <string name="dialog_undo_agree">AGREE</string>
+    <string name="dialog_undo_not_agree">DISAGREE</string>
+
+    <string name="dialog_pvp_title">PVP</string>
+    <string name="dialog_pvp_create">Create Game</string>
+    <string name="dialog_pvp_join">Join Game</string>
+
+    <string name="dialog_wait_massage">Waiting for link...</string>
+    <string name="dialog_wait_cancel">CANCEL</string>
+
+    <string name="dialog_join_title">JOIN GAME</string>
+    <string name="dialog_join_search">Search</string>
+    <string name="dialog_join_cancel">CANCEL</string>
+
+    <string name="dialog_settings_title">SETTINGS</string>
+    <string name="dialog_settings_show_possible_moves">Show Possible Moves</string>
+    <string name="dialog_settings_confirm">CONFIRM</string>
+
+    <string name="message_win">You win!</string>
+    <string name="message_loss">You loss!</string>
+    <string name="message_red_not_move">King is checked!</string>
+    <string name="message_blue_not_move">King is checked!</string>
+
+    <string name="message_admit_me">You loss!</string>
+    <string name="message_admit_you">That has resigned!</string>
+
+    <string name="message_linking">Linking...</string>
+    <string name="message_link_success">Link success, Wait for choosing First or Next~</string>
+    <string name="message_linked_success">Link success!</string>
+    <string name="message_wait_agree">Waiting for consent...</string>
+    <string name="message_undo_agree">Undo success!</string>
+    <string name="message_undo_disagree">Undo is disagreed!</string>
+
+    <string name="message_first">Red First!</string>
+    <string name="message_next">Blue next!</string>
 </resources>

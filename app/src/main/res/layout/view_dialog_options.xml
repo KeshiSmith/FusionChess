@@ -19,8 +19,7 @@
             android:id="@+id/switch_mute"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="10"
-            android:textColor="@color/app_text" />
+            android:layout_weight="10"/>
     </TableRow>
     <TableRow
         android:layout_width="wrap_content"

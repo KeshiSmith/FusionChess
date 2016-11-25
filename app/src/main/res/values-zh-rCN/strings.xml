@@ -41,7 +41,51 @@
     <string name="game_new_game">新 局</string>
     <string name="game_undo">悔 棋</string>
     <string name="game_resign">认 输</string>
+    <string name="game_pvp">对 战</string>
     <string name="game_settings">设 置</string>
-    <string name="game_assist">提 示</string>
     <string name="game_back">返 回</string>
+
+    <string name="dialog_new_title">新局</string>
+    <string name="dialog_new_red_or_blue">先后手：</string>
+    <string name="dialog_new_red">我先行</string>
+    <string name="dialog_new_blue">我后手</string>
+    <string name="dialog_new_confirm">确认</string>
+    <string name="dialog_new_cancel">取消</string>
+
+    <string name="dialog_undo_message">对方请求悔棋，是否同意?</string>
+    <string name="dialog_undo_agree">同意</string>
+    <string name="dialog_undo_not_agree">不同意</string>
+
+    <string name="dialog_pvp_title">对战</string>
+    <string name="dialog_pvp_create">创建对局</string>
+    <string name="dialog_pvp_join">加入对局</string>
+
+    <string name="dialog_wait_massage">等待连接中……</string>
+    <string name="dialog_wait_cancel">取消</string>
+
+    <string name="dialog_join_title">加入对局</string>
+    <string name="dialog_join_search">搜索</string>
+    <string name="dialog_join_cancel">取消</string>
+
+    <string name="dialog_settings_title">设置</string>
+    <string name="dialog_settings_show_possible_moves">显示可移动点</string>
+    <string name="dialog_settings_confirm">确认</string>
+
+    <string name="message_win">你赢了</string>
+    <string name="message_loss">你输了</string>
+    <string name="message_red_not_move">帅被将军</string>
+    <string name="message_blue_not_move">将被将军</string>
+
+    <string name="message_admit_me">>你输了</string>
+    <string name="message_admit_you">对方已认输</string>
+
+    <string name="message_linking">连接中……</string>
+    <string name="message_link_success">连接成功，等待房主选择先行还是后行~</string>
+    <string name="message_linked_success">连接成功</string>
+    <string name="message_wait_agree">等待对方同意</string>
+    <string name="message_undo_agree">悔棋成功</string>
+    <string name="message_undo_disagree">对方不同意悔棋</string>
+
+    <string name="message_first">红方先行</string>
+    <string name="message_next">蓝方后行</string>
 </resources>

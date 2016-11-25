@@ -6,4 +6,7 @@
 
     <color name="transparent">#0000</color>
     <color name="item_background">#1000</color>
+
+    <color name="button_background_normal">#1177bb</color>
+    <color name="button_background_clicked">#3399dd</color>
 </resources>

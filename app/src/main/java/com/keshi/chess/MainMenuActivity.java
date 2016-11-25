@@ -20,8 +20,6 @@ import android.widget.SeekBar;
 import android.widget.Switch;
 
 public class MainMenuActivity extends AppCompatActivity {
-    private SharedPreferences preferences;
-    private SharedPreferences.Editor editor;
     private Intent intent_music;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,9 +27,6 @@ public class MainMenuActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main_menu);
         // Keep screen ON.
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-        // Set SharedPreferences and get values from SharedPreferences file.
-        preferences=getSharedPreferences("FusionChess",MODE_PRIVATE);
-        editor=preferences.edit();
         // Get (Button)[chess,help,exit] from MainActivity.
         Button button_chess=(Button)findViewById(R.id.menu_chess);
         Button button_help=(Button)findViewById(R.id.menu_help);
@@ -43,6 +38,7 @@ public class MainMenuActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent chess_intent=new Intent(MainMenuActivity.this,GameActivity.class);
                 startActivity(chess_intent);
+                playSound(R.raw.new_game);//Play sound for chess start.
             }
         });
         button_help.setOnClickListener(new Button.OnClickListener(){
@@ -92,12 +88,6 @@ public class MainMenuActivity extends AppCompatActivity {
         super.onDestroy();
         // Stop service
         stopService(intent_music);
-        // Write it in file.
-        editor.putBoolean("MUTE", MusicService.state_mute);
-        editor.putInt("MUSIC", MusicService.volume_music);
-        editor.putInt("SOUND", MusicService.volume_sound);
-        editor.commit();
-        System.exit(0); // Exit the app and release resource
     }
 
     @Override
@@ -108,6 +98,7 @@ public class MainMenuActivity extends AppCompatActivity {
         }
         return super.onKeyDown(keyCode, event);
     }
+
     // A dialog for options.
     private void OptionsDialog(boolean state_mute,int volume_music,int volume_sound){
         AlertDialog.Builder options_builder =new AlertDialog.Builder(this);
@@ -185,7 +176,7 @@ public class MainMenuActivity extends AppCompatActivity {
             public void onStopTrackingTouch(SeekBar seekBar) {
                 Intent intent =new Intent("com.keshi.MUSIC");
                 intent.putExtra("sound",volume_sound);
-                intent.putExtra("playSound",R.raw.move);
+                intent.putExtra("playSound",R.raw.pick);
                 sendBroadcast(intent);
             }
         });
@@ -193,22 +184,30 @@ public class MainMenuActivity extends AppCompatActivity {
     }
     // A dialog for confirming exit.
     private void ConfirmExitDialog(){
-        AlertDialog.Builder exit_builder =new AlertDialog.Builder(MainMenuActivity.this);
-        exit_builder.setIcon(R.mipmap.ic_launcher);
-        exit_builder.setTitle(R.string.dialog_exit_title);
-        exit_builder.setMessage(R.string.dialog_exit_massage);
-        exit_builder.setPositiveButton(R.string.dialog_exit_confirm, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                finish();  // Finish this activity to exit.
-            }
-        });
-        exit_builder.setNegativeButton(R.string.dialog_exit_cancel, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                // Choose nothing.
-            }
-        });
-        exit_builder.create().show();    // Show the dialog.
+        AlertDialog exit_dialog =new AlertDialog.Builder(MainMenuActivity.this)
+                .setTitle(R.string.dialog_exit_title)
+                .setIcon(R.mipmap.ic_launcher)
+                .setMessage(R.string.dialog_exit_massage)
+                .setPositiveButton(R.string.dialog_exit_confirm, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        finish();  // Finish this activity to exit.
+                    }
+                })
+                .setNegativeButton(R.string.dialog_exit_cancel, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        // Choose nothing.
+                    }
+                }).create();// Create dialog.
+        exit_dialog.show();    // Show the dialog.
+    }
+    // Play Sounds.
+    public void playSound(int resid){
+        if(!MusicService.state_mute) {
+            Intent intent = new Intent("com.keshi.MUSIC");
+            intent.putExtra("playSound", resid);
+            sendBroadcast(intent);
+        }
     }
 }
