@@ -1,4 +1,4 @@
-package com.keshi.chess;
+package com.keshi.chess.view;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -11,7 +11,11 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 
-import com.jjtx.bluetoothutil.util.BluetoothHelper;
+import com.keshi.chess.jjtx.bluetoothutil.util.BluetoothHelper;
+import com.keshi.chess.java.ChessRecord;
+import com.keshi.chess.java.FusionChess;
+import com.keshi.chess.R;
+import com.keshi.chess.activity.GameActivity;
 
 import java.util.Set;
 
@@ -105,8 +109,8 @@ public class ChessView extends View {
             }
         }
 
-        if(!fusionChess.chessRecordsStack.empty()){//绘画上次路径
-            ChessRecord record=fusionChess.chessRecordsStack.lastElement();//获取记录
+        if(isCanUndo()){//绘画上次路径
+            ChessRecord record=fusionChess.getRecord();//获取记录
             Point from=new Point(record.getFrom());//起始点
             Point to=new Point(record.getTo());//目标点
             if(myTypeIsRed){
@@ -285,7 +289,7 @@ public class ChessView extends View {
 
     //判断是否可撤销棋子
     public boolean isCanUndo(){
-        return (!fusionChess.chessRecordsStack.empty());
+        return fusionChess.isCanUndo();
     }
 
     //撤销棋子函数

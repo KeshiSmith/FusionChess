@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.keshi.chess.MainMenuActivity"
+            android:name="com.keshi.chess.activity.MainMenuActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
@@ -22,16 +22,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.keshi.chess.HelpActivity"
+        <activity android:name="com.keshi.chess.activity.HelpActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:screenOrientation="portrait"
             android:theme="@style/FullscreenTheme" >
         </activity>
-        <activity android:name="com.keshi.chess.GameActivity"
+        <activity android:name="com.keshi.chess.activity.GameActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:screenOrientation="portrait"
             android:theme="@style/FullscreenTheme" >
         </activity>
-        <service android:name="com.keshi.chess.MusicService" />
+        <service android:name="com.keshi.chess.service.MusicService" />
     </application>
 </manifest>

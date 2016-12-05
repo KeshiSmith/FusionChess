@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background">
-    <com.keshi.chess.ChessView
+    <com.keshi.chess.view.ChessView
         android:id="@+id/game_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

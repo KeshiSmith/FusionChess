@@ -1,4 +1,4 @@
-package com.keshi.chess;
+package com.keshi.chess.service;
 
 import android.app.Service;
 import android.content.BroadcastReceiver;
@@ -8,6 +8,8 @@ import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.IBinder;
+
+import com.keshi.chess.R;
 
 public class MusicService extends Service {
     private SharedPreferences preferences;

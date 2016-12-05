@@ -1,14 +1,12 @@
-package com.keshi.chess;
+package com.keshi.chess.java;
 
 import android.graphics.Point;
-import android.support.annotation.Nullable;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Random;
 import java.util.Set;
 import java.util.Stack;
 
@@ -441,11 +439,26 @@ public class FusionChess {
         }
     }
 
+    public ChessRecord getRecord(){
+        if(isCanUndo()) {
+            return chessRecordsStack.lastElement();
+        }
+        else return null;
+    }
+
+    /**
+     *  This function is for judging if we can undo.
+     * @return True or false.
+     */
+    public boolean isCanUndo(){
+        return (!chessRecordsStack.empty());
+    }
+
     /**
      * This function is to undo pieces.
      */
     public boolean undoPiece(){
-        if(chessRecordsStack.empty())
+        if(!isCanUndo())
             return false; // Return when the stack is empty.
 
         ChessRecord record=chessRecordsStack.pop();
@@ -681,44 +694,5 @@ class AutoList implements Comparable<AutoList>{
 
     public void setValue(int value){
         this.value=value;
-    }
-}
-
-// This class is used to save records.
-class ChessRecord{
-    private Point from;
-    private Point to;
-    private byte choosePiece,toPiece;
-    private int value;
-
-    public ChessRecord(Point from,Point to,byte choosePiece,byte toPiece){
-        this.from=from;
-        this.to=to;
-        this.choosePiece=choosePiece;
-        this.toPiece=toPiece;
-    }
-
-    public Point getFrom() {
-        return from;
-    }
-
-    public Point getTo() {
-        return to;
-    }
-
-    public byte getChoosePiece() {
-        return choosePiece;
-    }
-
-    public byte getToPiece() {
-        return toPiece;
-    }
-
-    public int getValue() {
-        return value;
-    }
-
-    public void setValue(int value) {
-        this.value = value;
     }
 }

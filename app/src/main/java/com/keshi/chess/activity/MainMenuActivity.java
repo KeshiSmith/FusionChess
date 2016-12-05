@@ -1,12 +1,7 @@
-package com.keshi.chess;
+package com.keshi.chess.activity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.graphics.Bitmap;
-import android.media.Image;
-import android.os.Build;
-import android.support.annotation.RequiresApi;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -18,6 +13,9 @@ import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.SeekBar;
 import android.widget.Switch;
+
+import com.keshi.chess.service.MusicService;
+import com.keshi.chess.R;
 
 public class MainMenuActivity extends AppCompatActivity {
     private Intent intent_music;

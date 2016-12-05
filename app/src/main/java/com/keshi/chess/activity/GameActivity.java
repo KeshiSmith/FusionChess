@@ -1,4 +1,4 @@
-package com.keshi.chess;
+package com.keshi.chess.activity;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -18,7 +18,11 @@ import android.widget.CompoundButton;
 import android.widget.ListView;
 import android.widget.Switch;
 import android.widget.Toast;
-import com.jjtx.bluetoothutil.util.BluetoothHelper;
+import com.keshi.chess.jjtx.bluetoothutil.util.BluetoothHelper;
+import com.keshi.chess.view.ChessView;
+import com.keshi.chess.service.MusicService;
+import com.keshi.chess.eventListener.MyBluetoothListener;
+import com.keshi.chess.R;
 
 import java.io.UnsupportedEncodingException;
 
@@ -90,6 +94,10 @@ public class GameActivity extends Activity {
         button_back.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(bluetoothHelper.isConnected()){// Cut connect.
+                    sendMessage("disconnect");
+                    closeConnect();
+                }
                 finish();// Close this activity.
             }
         });

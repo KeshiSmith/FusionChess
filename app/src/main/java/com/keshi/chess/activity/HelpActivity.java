@@ -1,4 +1,4 @@
-package com.keshi.chess;
+package com.keshi.chess.activity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+
+import com.keshi.chess.R;
 
 public class HelpActivity extends Activity {
     @Override

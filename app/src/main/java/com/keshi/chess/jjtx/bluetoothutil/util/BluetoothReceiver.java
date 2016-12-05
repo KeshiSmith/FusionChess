@@ -1,4 +1,4 @@
-package com.jjtx.bluetoothutil.util;
+package com.keshi.chess.jjtx.bluetoothutil.util;
 
 import android.bluetooth.BluetoothDevice;
 import android.content.BroadcastReceiver;

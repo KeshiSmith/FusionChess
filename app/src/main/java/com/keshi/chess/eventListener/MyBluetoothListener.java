@@ -1,10 +1,11 @@
-package com.keshi.chess;
+package com.keshi.chess.eventListener;
 
 import android.bluetooth.BluetoothDevice;
 import android.content.Context;
 import android.graphics.Point;
 import android.os.Handler;
 import android.os.Message;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -12,8 +13,10 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.jjtx.bluetoothutil.util.BluetoothHelper;
-import com.jjtx.bluetoothutil.util.BluetoothHelperListener;
+import com.keshi.chess.jjtx.bluetoothutil.util.BluetoothHelper;
+import com.keshi.chess.jjtx.bluetoothutil.util.BluetoothHelperListener;
+import com.keshi.chess.R;
+import com.keshi.chess.activity.GameActivity;
 
 import java.io.UnsupportedEncodingException;
 import java.util.List;
@@ -49,7 +52,9 @@ public class MyBluetoothListener implements BluetoothHelperListener {
     }
 
     private void showToast(int msg) {
-        Toast.makeText(context, msg, Toast.LENGTH_SHORT).show();
+        Toast toast=Toast.makeText(context,msg,Toast.LENGTH_SHORT);
+        toast.setGravity(Gravity.CENTER,0,0);
+        toast.show();
     }
 
     @Override
@@ -186,6 +191,10 @@ public class MyBluetoothListener implements BluetoothHelperListener {
                     }
                     else if(message.equals("blue")){//房主选择蓝色
                         gameActivity.newGame(true);
+                    }
+                    else if(message.equals("disconnect")){//失去连接
+                        showToast(R.string.message_disconnect);
+                        gameActivity.closeConnect();//断开连接
                     }
                     else if(message.equals("admit")){
                         gameActivity.admitGame(false);//对方认输

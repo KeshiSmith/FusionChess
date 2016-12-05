@@ -34,7 +34,7 @@
         不必要的情况发生。\n\n
         \t\t\t\t如果想要更多有关融合象棋的信息，请在游戏中体验，
         相信本游戏将给你带来一股新鲜之息。\n\n\n
-        制作者：可是，杰杰天下\n
+        制作者：可是，杰杰天下，晨大\n
         联系方式：823424123@163.com\n
     </string>
 
@@ -56,7 +56,7 @@
     <string name="dialog_undo_agree">同意</string>
     <string name="dialog_undo_not_agree">不同意</string>
 
-    <string name="dialog_pvp_title">对战</string>
+    <string name="dialog_pvp_title">蓝牙对战</string>
     <string name="dialog_pvp_create">创建对局</string>
     <string name="dialog_pvp_join">加入对局</string>
 
@@ -76,7 +76,7 @@
     <string name="message_red_not_move">帅被将军</string>
     <string name="message_blue_not_move">将被将军</string>
 
-    <string name="message_admit_me">>你输了</string>
+    <string name="message_admit_me">你输了</string>
     <string name="message_admit_you">对方已认输</string>
 
     <string name="message_linking">连接中……</string>
@@ -85,6 +85,7 @@
     <string name="message_wait_agree">等待对方同意</string>
     <string name="message_undo_agree">悔棋成功</string>
     <string name="message_undo_disagree">对方不同意悔棋</string>
+    <string name="message_disconnect">你已失去连接！</string>
 
     <string name="message_first">红方先行</string>
     <string name="message_next">蓝方后行</string>
