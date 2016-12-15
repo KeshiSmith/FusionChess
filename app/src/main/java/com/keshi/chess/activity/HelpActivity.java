@@ -25,7 +25,6 @@ public class HelpActivity extends Activity {
                 finish();// Close this activity.
             }
         });
-
     }
 
     @Override

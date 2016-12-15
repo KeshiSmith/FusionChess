@@ -229,7 +229,7 @@ public class ChessView extends View {
         showMessage(message);//提示游戏开始
 
         if(!bluetoothHelper.isConnected()&&!myTypeIsRed){
-            autoMovePiece();//红棋自动先行
+            movePiece(new Point(0,1),new Point(2,2),FusionChess.HORSE);//红棋自动先行
         }
     }
 
@@ -259,7 +259,6 @@ public class ChessView extends View {
 
                 if(bluetoothHelper.isConnected()){
                     isAdmit=true;//结束游戏
-                    activity.closeConnect();// 关闭蓝牙连接
                 }
             }
             else {
@@ -271,7 +270,7 @@ public class ChessView extends View {
         }
         isRedGo = !isRedGo;//轮流下棋
         invalidate();//刷新视图
-        if(!bluetoothHelper.isConnected()){
+        if(!bluetoothHelper.isConnected()&&myTypeIsRed!=isRedGo){
             autoMovePiece();//对方下棋
         }
     }
@@ -303,7 +302,7 @@ public class ChessView extends View {
                 isRedGo = !isRedGo;//轮流下棋
             }
             else if(!myTypeIsRed&&!bluetoothHelper.isConnected()){
-                autoMovePiece();//红棋自动先行
+                movePiece(new Point(0,1),new Point(2,2),FusionChess.HORSE);//红棋自动先行
             }
             else break;
         }while(flag!=isRedGo);
@@ -331,6 +330,10 @@ public class ChessView extends View {
             }
             isRedGo=!isRedGo;//轮流下棋
             invalidate();//提示成功刷新视图
+        }
+        else{
+            showMessage(getContext().getString(R.string.message_win));//将死
+            playSound(R.raw.win);//播放输赢音效
         }
     }
 
